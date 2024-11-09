@@ -18,7 +18,8 @@ def clean_data(df):
     # Convertir 'Installs' a valores numéricos eliminando '+' y ','
     df['Installs'] = df['Installs'].str.replace('[+,]', '', regex=True).astype(float)
     
-    # Convertir 'Price' a valores numéricos eliminando '$'
+    # Reemplazar 'Free' por '0' en la columna 'Price' y convertir a float
+    df['Price'] = df['Price'].replace('Free', '0')
     df['Price'] = df['Price'].str.replace('$', '').astype(float)
     
     return df
@@ -71,4 +72,3 @@ if st.sidebar.button("Tendencias de Descargas"):
     - **Estrellas Emergentes**: Aplicaciones innovadoras que ganan popularidad rápidamente.
     - **Crecimiento Sostenido**: Crecimiento constante en mercados de nicho.
     """)
-
